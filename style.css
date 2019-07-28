@@ -1,0 +1,11 @@
+.buttonContainer{
+    padding:10px;
+    height:200px;
+    border: solid,black,1px;
+    background-color:grey;
+}
+button{
+    border-radius:7px;
+    background-color: black;
+    color:white;
+}
