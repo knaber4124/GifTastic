@@ -1,33 +1,33 @@
 $(document).ready(function () {
     let options = ['New England Patriots', 'San Francisco 49ers', 'Pittsburgh Steelers', 'Miami Dolphins', 'Oakland Raiders'];
-      
-    
-    // function displayGif() {
-    //     let teamName=$(this).attr('data-name');
-    //     let queryURL = 'https://api.giphy.com/v1/gifs/search?apikey=zuXwvRKYt5bBv7lIhceQMWBRqbp9XB76&q='+teamName;
-    //     let gif = $(this).attr('src', queryURL);    
-    //     $.ajax({
-    //         url: queryURL,
-    //         method:'GET'
-    //     }).then(function (response) {
-    //         options.forEach(element => {
-    //             let teamDiv = $('<div>');
-    //             let gifimage = response.images.downsized.url;
-    //             let ratingDiv = $('<div>');
-    //             let rating = reponse.rating;
-    //             teamDiv.append(gifimage);
-    //             ratingDiv.append(rating);
-    //             $('.gifDisplay').append(teamDiv,ratingDiv);
 
-    //         });
-    //     });
-    // };
+
+    function displayGif() {
+        let buttonName = $(this).attr('data-name');
+        let queryURL = 'https://api.giphy.com/v1/gifs/search?q=' + buttonName + '&limit=20&apikey=zuXwvRKYt5bBv7lIhceQMWBRqbp9XB76';
+        
+        $.ajax({
+            url: queryURL,
+            method: 'GET'
+        }).then(function (response) {
+            let responseArray = response.data;
+            for (let i = 0; i < responseArray.length; i++) {
+                let newDiv = $('<div>');
+                let imgURL = response.data[0].images.original.url;
+                let gifDiv = $('<img>').attr('src', imgURL);
+                let ratingDiv = $('<div>');
+                ratingDiv.text('Rated:' + response.data[0].rating);
+                newDiv.append(gifDiv, ratingDiv);
+                $('.gifDisplay').prepend(newDiv);
+            }
+        });
+    };
     function genButtons() {
         $('.buttonContainer').empty();
         for (let i = 0; i < options.length; i++) {
             let newBtn = $('<button>');
             newBtn.addClass('gifImage', 'gifStill');
-            newBtn.attr('data-name',options[i]);
+            newBtn.attr('data-name', options[i]);
             newBtn.text(options[i]);
             $('.buttonContainer').append(newBtn);
         };
@@ -39,7 +39,7 @@ $(document).ready(function () {
         genButtons();
     });
 
-    // $(document).on('click','.gifImage', displayGif);
+    $(document).on('click', '.gifImage', displayGif);
 
 
 
