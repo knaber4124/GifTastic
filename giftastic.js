@@ -39,10 +39,7 @@ $(document).ready(function () {
         genButtons();
         $('#gif-input').val('')
     });
-    // $('#gif-input').on('click', function(event){
-    //         $(this).val('')
-    //     }
-    // );
+    
 
     $(document).on('click', '.gifImage', displayGif);
 
