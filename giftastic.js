@@ -38,6 +38,10 @@ $(document).ready(function () {
         options.push(newOption);
         genButtons();
     });
+    $('#gif-input').on('click', function(event){
+            $(this).val('')
+        }
+    );
 
     $(document).on('click', '.gifImage', displayGif);
 
