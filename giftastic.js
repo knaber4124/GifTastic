@@ -37,11 +37,12 @@ $(document).ready(function () {
         var newOption = $('#gif-input').val().trim();
         options.push(newOption);
         genButtons();
+        $('#gif-input').val('')
     });
-    $('#gif-input').on('click', function(event){
-            $(this).val('')
-        }
-    );
+    // $('#gif-input').on('click', function(event){
+    //         $(this).val('')
+    //     }
+    // );
 
     $(document).on('click', '.gifImage', displayGif);
 
