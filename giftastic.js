@@ -13,10 +13,10 @@ $(document).ready(function () {
             let responseArray = response.data;
             for (let i = 0; i < responseArray.length; i++) {
                 let newDiv = $('<div>');
-                let imgURL = response.data[0].images.original.url;
+                let imgURL = response.data[i].images.original.url;
                 let gifDiv = $('<img>').attr('src', imgURL);
                 let ratingDiv = $('<div>');
-                ratingDiv.text('Rated:' + response.data[0].rating);
+                ratingDiv.text('Rated:' + response.data[i].rating);
                 newDiv.append(gifDiv, ratingDiv);
                 $('.gifDisplay').prepend(newDiv);
             }
